@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.data.UserData;
 import com.example.demo.model.Greeting;
 import com.example.demo.service.IGreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,11 @@ public class GreetingController {
         return greetingService.greetingMessage();
 
     }
+    
+    @PostMapping("/greeting")
+    public String greetingMessage(@RequestBody UserData userData) {
+        return greetingService.greetingMessageByName(userData);
 
 
+}
 }
