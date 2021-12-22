@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.data.UserData;
 import com.example.demo.model.Greeting;
+import com.example.demo.model.User;
 import com.example.demo.service.IGreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -53,7 +54,10 @@ public class GreetingController {
     @PostMapping("/greeting")
     public String greetingMessage(@RequestBody UserData userData) {
         return greetingService.greetingMessageByName(userData);
+    }
+    @GetMapping("/find")
+    public Greeting findGreetById(@RequestParam long id) {
+        return greetingService.getById(id);
+    }
 
-
-}
 }
