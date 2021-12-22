@@ -85,6 +85,7 @@ public class GreetingController {
 	/**
 	 * Call method to list all the messages
 	 */
+	
 	@GetMapping("/services")
 	public List<Greeting> getMessages() {
 		return this.greetingService.getMessages();
@@ -92,6 +93,7 @@ public class GreetingController {
 	/**
 	 * Call method to edit message
 	 */
+	
 	@PutMapping("/services/edit")
 	public Greeting editMessage(Greeting greeting) {
 		return this.greetingService.editMessage(greeting);
@@ -99,6 +101,7 @@ public class GreetingController {
 	/**
 	 * Call method to delete message by message Id
 	 */
+	
 	@DeleteMapping("/services/delete/{Id}")
 	public Greeting deleteMessage(@PathVariable String Id) {
 		return greetingService.deleteMessage(Long.parseLong(Id));
