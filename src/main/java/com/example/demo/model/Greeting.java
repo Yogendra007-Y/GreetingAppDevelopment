@@ -20,6 +20,7 @@ public class Greeting {
 		this.id = id;
 		this.message = message;
 	}
+	
 
 	public long getId() {
 		return id;

@@ -26,6 +26,7 @@ public class GreetingService implements IGreetingService {
 		 return greetingRepository.save(new Greeting(counter.incrementAndGet(), String.format(template)));
 	 }
 	 
+	 
 	 @Override
 	 public String gettingMessageByName(UserData userData) {
 		 User user = new User();
@@ -34,10 +35,12 @@ public class GreetingService implements IGreetingService {
 		 return ("Hello" +" "+ user.getFirstName() + " " + user.getLastName()+"...");
 	}
 	
+	 
 	 @Override
 		public Greeting findById(long Id) {
 			return greetingRepository.findById(Id).get();
 		}
+	 
 	 @Override
 		public List<Greeting> getMessages() {
 			return greetingRepository.findAll();

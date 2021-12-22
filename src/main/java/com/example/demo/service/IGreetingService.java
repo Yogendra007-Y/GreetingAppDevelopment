@@ -14,4 +14,5 @@ public interface IGreetingService {
 	String gettingMessageByName(UserData userData);
 	Greeting findById(long Id);
 	List<Greeting> getMessages();
+	
 }

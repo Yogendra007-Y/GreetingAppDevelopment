@@ -69,10 +69,12 @@ public class GreetingController {
 	     return greetingService.greetingMessage();
 	}
 	
+	
 	@PostMapping("/greet")
 	public String greetingMessageByName(@RequestBody UserData userData) {
 		return greetingService.gettingMessageByName(userData);
 	}
+	
 	
 	 /**
 	  * Call method to find the message by message Id
@@ -81,6 +83,7 @@ public class GreetingController {
 	public Greeting findById(@PathVariable String messId) {
 		return this.greetingService.findById(Long.parseLong(messId));
 	}
+	
 	
 	/**
 	 * Call method to list all the messages
