@@ -74,10 +74,17 @@ public class GreetingController {
 		return greetingService.gettingMessageByName(userData);
 	}
 	
-	@GetMapping("/service/{Id}")
-	public Greeting findById(@PathVariable String Id) {
-		return this.greetingService.findById(Long.parseLong(Id));
+	 /**
+	  * Call method to find the message by message Id
+	  */
+	@GetMapping("/service/{messId}")
+	public Greeting findById(@PathVariable String messId) {
+		return this.greetingService.findById(Long.parseLong(messId));
 	}
+	
+	/**
+	 * Call method to list all the messages
+	 */
 	@GetMapping("/services")
 	public List<Greeting>getMessages(){
 		return this.greetingService.getMessages();

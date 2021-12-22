@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
-
-
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,7 @@ import com.example.demo.data.UserData;
 import com.example.demo.model.Greeting;
 import com.example.demo.model.User;
 import com.example.demo.model.repository.IGreetingRepository;
+
 @Service
 public class GreetingService implements IGreetingService {
 	private static final String template = "Hello world!";
@@ -34,6 +34,13 @@ public class GreetingService implements IGreetingService {
 		 return ("Hello" +" "+ user.getFirstName() + " " + user.getLastName()+"...");
 	}
 	
-	
+	 @Override
+		public Greeting findById(long Id) {
+			return greetingRepository.findById(Id).get();
+		}
+	 @Override
+		public List<Greeting> getMessages() {
+			return greetingRepository.findAll();
+		}
 	}
 	 
