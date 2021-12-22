@@ -11,8 +11,13 @@ import com.example.demo.model.Greeting;
 @Service
 public interface IGreetingService {
 	Greeting greetingMessage();
+
 	String gettingMessageByName(UserData userData);
+
 	Greeting findById(long Id);
+
 	List<Greeting> getMessages();
 	
+	Greeting editMessage(Greeting greeting);
+
 }
