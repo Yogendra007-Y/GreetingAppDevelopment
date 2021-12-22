@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.example.demo.data.UserData;
 import com.example.demo.model.Greeting;
 import com.example.demo.service.IGreetingService;
@@ -85,23 +83,24 @@ public class GreetingController {
 	/**
 	 * Call method to list all the messages
 	 */
-	
 	@GetMapping("/services")
 	public List<Greeting> getMessages() {
 		return this.greetingService.getMessages();
 	}
+
 	/**
 	 * Call method to edit message
 	 */
-	
+
 	@PutMapping("/services/edit")
 	public Greeting editMessage(Greeting greeting) {
 		return this.greetingService.editMessage(greeting);
 	}
+
 	/**
 	 * Call method to delete message by message Id
 	 */
-	
+
 	@DeleteMapping("/services/delete/{Id}")
 	public Greeting deleteMessage(@PathVariable String Id) {
 		return greetingService.deleteMessage(Long.parseLong(Id));

@@ -14,37 +14,37 @@ import com.example.demo.model.repository.IGreetingRepository;
 
 @Service
 public class GreetingService implements IGreetingService {
-	
-	 private static final String template = "Hello world";
-	 private final AtomicLong counter = new AtomicLong();
-	 
-	 @Autowired
-	 private IGreetingRepository greetingRepository;
-	 
-	 /**
-	  * Call method to save the message in the repository
-	  */
-	 @Override
-	 public Greeting greetingMessage() {
-		 return greetingRepository.save(new Greeting(counter.incrementAndGet(), String.format(template)));
-	 }
-	 
-	 @Override
-	 public String gettingMessageByName(UserData userData) {
-		 User user = new User();
-		 ModelMapper modelMapper = new ModelMapper();
-		 modelMapper.map(userData, user);
-		 return ("Hello" +" "+ user.getFirstName() + " " + user.getLastName()+"...");
+
+	private static final String template = "Hello world";
+	private final AtomicLong counter = new AtomicLong();
+
+	@Autowired
+	private IGreetingRepository greetingRepository;
+
+	/**
+	 * Call method to save the message in the repository
+	 */
+	@Override
+	public Greeting greetingMessage() {
+		return greetingRepository.save(new Greeting(counter.incrementAndGet(), String.format(template)));
 	}
-	
-	 /**
-	  * Call method to find the message by message Id
-	  */
+
+	@Override
+	public String gettingMessageByName(UserData userData) {
+		User user = new User();
+		ModelMapper modelMapper = new ModelMapper();
+		modelMapper.map(userData, user);
+		return ("Hello" + " " + user.getFirstName() + " " + user.getLastName() + "...");
+	}
+
+	/**
+	 * Call method to find the message by message Id
+	 */
 	@Override
 	public Greeting findById(long messId) {
 		return greetingRepository.findById(messId).get();
 	}
-	
+
 	/**
 	 * Call method to list all the messages
 	 */
@@ -58,16 +58,17 @@ public class GreetingService implements IGreetingService {
 	 */
 	@Override
 	public Greeting editMessage(Greeting greeting) {
-		return greetingRepository.save(new Greeting(2,"Hello Yogendr..."));
+		return greetingRepository.save(new Greeting(2, "Hello Yogendr..."));
 	}
+
 	@Override
 	public Greeting deleteMessage(Long messId) {
 		Optional<Greeting> isPresent = greetingRepository.findById(messId);
-		if(isPresent.isPresent()) {
+		if (isPresent.isPresent()) {
 			greetingRepository.delete(isPresent.get());
 			return isPresent.get();
-		}else
+		} else
 			return null;
-	 
-}
+
+	}
 }
