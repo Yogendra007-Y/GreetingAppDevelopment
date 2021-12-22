@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -76,7 +77,7 @@ public class GreetingController {
 	/**
 	 * Call method to find the message by message Id
 	 */
-	@GetMapping("/service/{messId}")
+	@GetMapping("/service/{Id}")
 	public Greeting findById(@PathVariable String Id) {
 		return this.greetingService.findById(Long.parseLong(Id));
 	}
@@ -95,5 +96,11 @@ public class GreetingController {
 	public Greeting editMessage(Greeting greeting) {
 		return this.greetingService.editMessage(greeting);
 	}
-
+	/**
+	 * Call method to delete message by message Id
+	 */
+	@DeleteMapping("/services/delete/{Id}")
+	public Greeting deleteMessage(@PathVariable String Id) {
+		return greetingService.deleteMessage(Long.parseLong(Id));
+	}
 }

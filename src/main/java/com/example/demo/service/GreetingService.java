@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,5 +60,14 @@ public class GreetingService implements IGreetingService {
 	public Greeting editMessage(Greeting greeting) {
 		return greetingRepository.save(new Greeting(2,"Hello Yogendr..."));
 	}
+	@Override
+	public Greeting deleteMessage(Long messId) {
+		Optional<Greeting> isPresent = greetingRepository.findById(messId);
+		if(isPresent.isPresent()) {
+			greetingRepository.delete(isPresent.get());
+			return isPresent.get();
+		}else
+			return null;
 	 
+}
 }

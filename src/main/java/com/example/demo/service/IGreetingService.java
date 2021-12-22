@@ -19,5 +19,7 @@ public interface IGreetingService {
 	List<Greeting> getMessages();
 	
 	Greeting editMessage(Greeting greeting);
+	
+	Greeting deleteMessage(Long messId);
 
 }
